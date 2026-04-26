@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadence Virtuoso – Schematic Editor Shortcuts</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', 'Arial', sans-serif;
+    background: #f0f4f8;
+    color: #1e293b;
+    padding: 20px;
+    direction: rtl;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #1a2a4a 0%, #2563eb 100%);
+    padding: 32px 36px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1px;
+    direction: ltr;
+  }
+  .header p {
+    color: #93c5fd;
+    font-size: 15px;
+    margin-top: 6px;
+    direction: ltr;
+  }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #dbeafe;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    direction: ltr;
+  }
+
+  /* ── Body ── */
+  .body { padding: 28px 32px; }
+
+  /* ── Section title ── */
+  .section-title {
+    background: #2563eb;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 24px 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    direction: rtl;
+  }
+  .section-title .en {
+    font-size: 13px;
+    font-weight: 400;
+    color: #bfdbfe;
+    direction: ltr;
+    margin-right: auto;
+  }
+
+  /* ── Table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  thead th {
+    background: #1e40af;
+    color: white;
+    padding: 9px 12px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  thead th:first-child  { text-align: left;  direction: ltr; border-radius: 0; }
+  thead th:nth-child(2) { text-align: left;  direction: ltr; }
+  thead th:last-child   { text-align: right; direction: rtl; }
+
+  tbody tr:nth-child(even) { background: #f8fafc; }
+  tbody tr:nth-child(odd)  { background: white; }
+  tbody tr:hover { background: #eff6ff; }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+  }
+  td:first-child {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    color: #2563eb;
+    background: #f0f7ff;
+    border-right: 3px solid #2563eb;
+    text-align: left;
+    direction: ltr;
+    white-space: nowrap;
+    width: 160px;
+  }
+  td:nth-child(2) {
+    text-align: left;
+    direction: ltr;
+    color: #374151;
+    width: 300px;
+  }
+  td:last-child {
+    text-align: right;
+    direction: rtl;
+    color: #1e293b;
+    font-weight: 600;
+  }
+
+  /* ── Tip box ── */
+  .tip {
+    background: #fefce8;
+    border: 1px solid #fbbf24;
+    border-right: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: #78350f;
+    direction: rtl;
+  }
+  .tip strong { color: #b45309; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    color: #94a3b8;
+    font-size: 11px;
+    direction: ltr;
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+    .print-btn { display: none; }
+    table { font-size: 12px; }
+    .section-title { font-size: 13px; }
+  }
+
+  .print-btn {
+    display: block;
+    text-align: center;
+    margin: 16px auto 0;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    width: fit-content;
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  /* ── Mobile Responsiveness ── */
+  @media (max-width: 640px) {
+    body { padding: 10px; }
+    .header { padding: 24px 16px; }
+    .header h1 { font-size: 22px; }
+    .header p { font-size: 14px; }
+    .body { padding: 16px 12px; }
+    
+    .section-title {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .section-title .en {
+      margin-right: 0;
+      font-size: 12px;
+    }
+    
+    table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100% !important;
+    }
+    thead { display: none; }
+    
+    tr {
+      margin-bottom: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      background: white !important;
+    }
+    td {
+      text-align: center !important;
+      direction: rtl;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px dashed #e2e8f0;
+      white-space: normal !important;
+    }
+    td:last-child {
+      border-bottom: none;
+    }
+    td:first-child {
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      border-right: none;
+      font-size: 15px;
+      direction: ltr;
+    }
+    td:nth-child(2) {
+      direction: ltr;
+      color: #64748b;
+      font-size: 13.5px;
+    }
+    td:last-child {
+      font-size: 15px;
+    }
+    .tip {
+      font-size: 12.5px;
+      padding: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Cadence Virtuoso</h1>
+    <p>Keyboard Shortcuts Reference Guide</p>
+    <div class="badge">Schematic Editor Only</div>
+  </div>
+
+  <div class="body">
+
+    <!-- Section 1: Wires -->
+    <div class="section-title">
+      🔗 الأسلاك والتوصيلات
+      <span class="en">Wires &amp; Connectivity</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Shortcut</th><th>English Function</th><th>الوظيفة بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>W</td><td>Draw a wire</td><td>رسم سلك (توصيل)</td></tr>
+        <tr><td>Shift + W</td><td>Draw a wide wire / bus</td><td>رسم سلك عريض (باص)</td></tr>
+        <tr><td>L</td><td>Label / Name a wire (net name)</td><td>تسمية سلك أو نت</td></tr>
+        <tr><td>P</td><td>Create a pin</td><td>إضافة بين (طرف توصيل)</td></tr>
+        <tr><td>T</td><td>Edit net name in place</td><td>تعديل اسم النت مباشرةً</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Section 2: Components -->
+    <div class="section-title">
+      🔲 المكونات والعناصر
+      <span class="en">Components &amp; Instances</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Shortcut</th><th>English Function</th><th>الوظيفة بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>I</td><td>Insert / Place a new instance</td><td>إضافة مكوّن/عنصر جديد</td></tr>
+        <tr><td>Q</td><td>Open / Edit instance properties</td><td>فتح خصائص العنصر المحدد</td></tr>
+        <tr><td>M</td><td>Move (keeps wire connections)</td><td>تحريك مع الحفاظ على الأسلاك</td></tr>
+        <tr><td>Shift + M</td><td>Move only (without wires)</td><td>تحريك العنصر فقط بدون الأسلاك</td></tr>
+        <tr><td>C</td><td>Copy selected objects</td><td>نسخ العناصر المحددة</td></tr>
+        <tr><td>R</td><td>Rotate object</td><td>تدوير العنصر</td></tr>
+        <tr><td>Shift + R</td><td>Mirror instance horizontally</td><td>عكس العنصر أفقياً</td></tr>
+        <tr><td>Ctrl + R</td><td>Mirror instance vertically</td><td>عكس العنصر رأسياً</td></tr>
+        <tr><td>Del</td><td>Delete selected component</td><td>حذف العنصر المحدد</td></tr>
+        <tr><td>Shift + Del</td><td>Comment / Uncomment instance</td><td>تعطيل أو تفعيل عنصر (تعليق)</td></tr>
+        <tr><td>Spacebar</td><td>Add wire stubs and names to instance</td><td>إضافة أطراف وأسماء للعنصر</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Section 3: Edit & Save -->
+    <div class="section-title">
+      💾 التعديل والحفظ
+      <span class="en">Edit &amp; Save</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Shortcut</th><th>English Function</th><th>الوظيفة بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>U</td><td>Undo</td><td>تراجع عن الخطوة الأخيرة</td></tr>
+        <tr><td>Shift + U</td><td>Redo</td><td>إعادة الخطوة التي تم التراجع عنها</td></tr>
+        <tr><td>X</td><td>Save the schematic</td><td>حفظ السيماتك</td></tr>
+        <tr><td>Shift + X</td><td>Check and Save</td><td>فحص وحفظ السيماتك</td></tr>
+        <tr><td>N</td><td>Create a note shape</td><td>إضافة شكل ملاحظة</td></tr>
+        <tr><td>Shift + N</td><td>Create a text note</td><td>إضافة ملاحظة نصية</td></tr>
+        <tr><td>Esc</td><td>Cancel current tool / deselect</td><td>إلغاء الأداة الحالية أو التحديد</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Section 4: Hierarchy -->
+    <div class="section-title">
+      🏗️ التنقل بين المستويات
+      <span class="en">Hierarchy Navigation</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Shortcut</th><th>English Function</th><th>الوظيفة بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>E</td><td>Descend into instance (read-only)</td><td>النزول داخل مكوّن (قراءة فقط)</td></tr>
+        <tr><td>Shift + E</td><td>Descend into instance (edit mode)</td><td>النزول داخل مكوّن (وضع تعديل)</td></tr>
+        <tr><td>Ctrl + E</td><td>Ascend / Return to upper level</td><td>الصعود للمستوى الأعلى</td></tr>
+        <tr><td>Shift + T</td><td>Display hierarchy tree</td><td>عرض شجرة التسلسل الهرمي</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Section 5: View & Zoom -->
+    <div class="section-title">
+      🔍 العرض والتكبير/التصغير
+      <span class="en">View &amp; Zoom</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Shortcut</th><th>English Function</th><th>الوظيفة بالعربي</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>F</td><td>Fit entire schematic to window</td><td>ضبط عرض السيماتك كاملاً في الشاشة</td></tr>
+        <tr><td>Z / Right+Drag</td><td>Zoom to selected area</td><td>تكبير منطقة محددة</td></tr>
+        <tr><td>[ / Scroll up</td><td>Zoom in</td><td>تكبير</td></tr>
+        <tr><td>] / Scroll down</td><td>Zoom out</td><td>تصغير</td></tr>
+        <tr><td>O</td><td>Open Display Options window</td><td>فتح إعدادات العرض</td></tr>
+        <tr><td>Shift + O</td><td>Open Editor Options window</td><td>فتح إعدادات المحرر</td></tr>
+        <tr><td>F3</td><td>Open current function options</td><td>فتح خيارات الأمر الحالي</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Tip -->
+    <div class="tip">
+      💡 <strong>Pro Tip:</strong>
+      اضغط <strong>F3</strong> وأنت في أي أمر عشان تشوف الإعدادات التفصيلية بتاعته —
+      واضغط <strong>Esc</strong> في أي وقت لإلغاء الأداة الحالية.
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="footer">
+    Sources: AnalogHub.ie · UC Berkeley EE140 Cadence Shortcuts (2025) · Penn State CMPEN411
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
