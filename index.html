@@ -246,6 +246,91 @@
       padding: 12px;
     }
   }
+
+  /* ── Dark Mode ── */
+  body.dark-mode {
+    background: #0f172a;
+    color: #f8fafc;
+  }
+  body.dark-mode .page {
+    background: #1e293b;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  body.dark-mode .header {
+    background: linear-gradient(135deg, #020617 0%, #1e40af 100%);
+  }
+  body.dark-mode .section-title {
+    background: #3b82f6;
+  }
+  body.dark-mode table {
+    border-color: #334155;
+  }
+  body.dark-mode thead th {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+  body.dark-mode tbody tr:nth-child(even) { background: #1e293b; }
+  body.dark-mode tbody tr:nth-child(odd)  { background: #0f172a; }
+  body.dark-mode tbody tr:hover { background: #334155; }
+  body.dark-mode td {
+    border-bottom-color: #334155;
+  }
+  body.dark-mode td:nth-child(2) {
+    color: #cbd5e1;
+  }
+  body.dark-mode td:first-child {
+    color: #60a5fa;
+    background: #1e293b;
+    border-right-color: #3b82f6;
+  }
+  body.dark-mode td:last-child {
+    color: #f8fafc;
+  }
+  body.dark-mode .tip {
+    background: #451a03;
+    border-color: #92400e;
+    border-right-color: #f59e0b;
+    color: #fefce8;
+  }
+  body.dark-mode .tip strong { color: #fcd34d; }
+  body.dark-mode .footer {
+    background: #0f172a;
+    border-top-color: #334155;
+    color: #64748b;
+  }
+  
+  /* Mobile Dark Mode Exceptions */
+  @media (max-width: 640px) {
+    body.dark-mode tr {
+      background: #0f172a !important;
+      border-color: #334155;
+    }
+    body.dark-mode td { border-bottom-color: #334155; }
+    body.dark-mode td:first-child {
+      background: #1e293b;
+      border-bottom-color: #334155;
+    }
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .header { position: relative; } /* Added for toggle positioning */
 </style>
 </head>
 <body>
@@ -254,6 +339,7 @@
 
   <!-- Header -->
   <div class="header">
+    <button id="themeToggle" class="theme-toggle">🌙 Dark Mode</button>
     <h1>Cadence Virtuoso</h1>
     <p>Keyboard Shortcuts Reference Guide</p>
     <div class="badge">Schematic Editor Only</div>
@@ -375,5 +461,26 @@
 
 </div><!-- /page -->
 
+<script>
+  const toggleBtn = document.getElementById('themeToggle');
+  const bodyClass = document.body.classList;
+  
+  // Automatically check local storage or system preference
+  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    bodyClass.add('dark-mode');
+    toggleBtn.textContent = '☀️ Light Mode';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    bodyClass.toggle('dark-mode');
+    if (bodyClass.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      toggleBtn.textContent = '☀️ Light Mode';
+    } else {
+      localStorage.setItem('theme', 'light');
+      toggleBtn.textContent = '🌙 Dark Mode';
+    }
+  });
+</script>
 </body>
 </html>
