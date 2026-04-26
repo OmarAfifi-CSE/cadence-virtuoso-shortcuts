@@ -331,6 +331,18 @@
     background: rgba(255, 255, 255, 0.3);
   }
   .header { position: relative; } /* Added for toggle positioning */
+
+  @media (max-width: 640px) {
+    .theme-toggle {
+      position: static;
+      display: block;
+      margin: 0 auto 12px auto;
+      width: fit-content;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+    .header { padding-top: 16px; }
+  }
 </style>
 </head>
 <body>
