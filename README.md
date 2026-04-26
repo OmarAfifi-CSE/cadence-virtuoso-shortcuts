@@ -6,8 +6,7 @@ A beautifully designed, bilingual (English & Arabic), and mobile-responsive chea
 
 When working on Integrated Circuits (IC) and schematic design in Cadence Virtuoso, mastering keyboard shortcuts is essential to speed up your workflow. This repository hosts a neat, printable, and mobile-friendly HTML cheat sheet that lists the most common and useful shortcuts.
 
-### **[🔗 View the Live Cheat Sheet Here](https://<YOUR-GITHUB-USERNAME>.github.io/cadence-virtuoso-shortcuts/)** 
-*(Note: Replace `<YOUR-GITHUB-USERNAME>` with your actual GitHub username after publishing to GitHub Pages)*
+### **[🔗 View the Live Cheat Sheet Here](https://omarafifi-cse.github.io/cadence-virtuoso-shortcuts/)** 
 
 ## ✨ Features
 
